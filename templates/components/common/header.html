@@ -1,0 +1,93 @@
+{{#if banners.top}}
+<div class="banners">
+    {{#each banners.top}}
+    <div class="banner">
+        {{{this}}}
+    </div>
+    {{/each}}
+</div>
+{{/if}}
+<header class="header" role="banner">
+
+    <div class="top-header">
+        <div class="mobile-top-container">
+            <div class="toggleMenu">
+                <img class="burger" src="https://cdn6.bigcommerce.com/s-wrw5mek/product_images/uploaded_images/hamburger-03.png" width="24px" height="20px" alt="">
+                <img class="close-x" src="https://cdn6.bigcommerce.com/s-wrw5mek/product_images/uploaded_images/clos-menu-03.png" width="20px" height="20px" alt="">
+                <span class="menu">Menu</span>
+                <span class="close">Close</span>
+            </div>
+
+            <div class="mobile-logo">
+                <a href="/"><img src="https://cdn6.bigcommerce.com/s-wrw5mek/product_images/uploaded_images/mobile-logo-05.png" width="150px" height="35px" alt=""></a>
+            </div>
+
+            <div class="mobile-cart">
+                <span class="mob-cart-amt">{{ cart.quantity }}</span>
+                <a href="{{urls.cart}}"><img src="https://cdn6.bigcommerce.com/s-wrw5mek/product_images/uploaded_images/cart-search-03.png" height="22px" width="29px" alt="">
+                <span>Cart</span></a>
+            </div>
+        </div>
+
+        <div class="desktop-container">
+            <div class="topMenu cf">
+                <p>Serving you since 2001 - <a href="/about-us/">Learn More</a></p>
+
+                <ul class="top-right">
+                    <li class="signed-in-or-no">{{customer.name}}</li>
+                    <li class="login-logout">
+                        <span>Account</span>
+                         <ul>
+                            <li><a href="/account.php">My Account</a></li>
+                            {{#if customer}}
+                                <li><a href="{{urls.auth.logout}}">Logout</a></li>
+                            {{else}}
+                                <li class=""><a href="/login.php">Login</a> / <a href="/account.php">Register</a></li>
+                            {{/if}}
+                         </ul>
+                    </li>
+
+
+                    <li class="desk-cart-amt">
+                        <a
+                            class="navUser-action"
+                            data-cart-preview
+                            data-dropdown="cart-preview-dropdown"
+                            data-options="align:right"
+                            href="{{urls.cart}}">
+                            <span class="navUser-item-cartLabel"><img class="desk-cart" src="https://cdn6.bigcommerce.com/s-wrw5mek/product_images/uploaded_images/cart-search-03.png" height="15px" width="20px" alt=""></span> (<span class="countPill{{#if cart.items}} countPill--positive{{/if}} cart-quantity">{{cart.quantity}}</span>)
+                        </a>
+                        <div class="dropdown-menu" id="cart-preview-dropdown" data-dropdown-content aria-hidden="true"></div>
+                    </li>
+
+
+                </ul>
+            </div>
+
+            <div class="logo">
+                <a href="/"><img src="https://cdn6.bigcommerce.com/s-wrw5mek/product_images/uploaded_images/desk-logo-05.png" alt=""></a>
+            </div>
+
+
+            <div class="search">
+                {{> components/common/search-box}}
+            </div>
+
+            <div class="order-phone">
+                <a href="/returns/">HASSLE FREE RETURNS <span>see details</span></a>
+            </div>
+
+        </div>
+
+        <div class="navPages-container" id="mobile-menu">
+            {{> components/common/navigation-mobile}}
+        </div>
+
+    </div> <!-- end top header -->
+
+    <div class="header-promo">
+        <p class="mob-ship">Free shipping over $99 <a href="/returns/"><span class="details">see details</span></a></p>
+        <p class="desk-ship">Free shipping on all orders over $99 <a href="/returns/"><span class="details">see details</span></a></p>
+    </div>
+
+</header>

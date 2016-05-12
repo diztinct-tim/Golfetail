@@ -1,0 +1,24 @@
+<nav class="navPages mobile-drawer">
+    <ul class="navPages-list">
+            <li class="navPages-item home-img"> <a href="/"><img src="https://cdn6.bigcommerce.com/s-wrw5mek/product_images/uploaded_images/home-icon-03.png" height="18px" width="18px" alt=""></a></li>
+        {{#each categories}}
+            <li class="navPages-item">
+                {{> components/common/navigation-list}}
+            </li>
+        {{/each}}
+            <li class="navPages-item brands-link"> <a class="navPages-action" href="/brands/">Brands</a></li>
+    </ul>
+    <ul class="drawer-menu-pages">
+        <!-- <li class="mobile-login-logout">{{customer.name}}</li> -->
+        {{#if customer}}
+            <li><a href="{{urls.auth.logout}}">Logout</a></li>
+        {{else}}
+            <li class=""><a href="/login.php">Login</a> or <a href="/account.php">Register</a></li>
+        {{/if}}
+        <li><a href="/contact-us/">Contact Us</a></li>
+        <li><a href="/account.php">My Account</a></li>
+        <li><a href="/cart.php">Shopping Cart</a></li>
+        <li><a href="/helpful-tips/">Helpful Tips</a></li>
+        <li><a href="tel:+1-877-570-4653">Call 1-877-570-GOLF</a></li>
+    </ul>
+</nav>

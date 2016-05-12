@@ -1,0 +1,188 @@
+---
+products:
+    new:
+        limit: 10
+    featured:
+        limit: {{theme_settings.homepage_featured_products_count}}
+    top_sellers:
+        limit: {{theme_settings.homepage_top_products_count}}
+carousel: {{theme_settings.homepage_show_carousel}}
+blog:
+    recent_posts:
+        limit: {{theme_settings.homepage_blog_posts_count}}
+cart: true        
+---
+
+{{#partial "page"}}
+
+    {{#each shipping_messages}}
+        {{> components/common/alert-info message}}
+    {{/each}}
+
+<div class="main full">
+    
+    <div class="mob-banner">
+        <a href="/golf-apparel/shirts/#/?Category0=Apparel&Category1=Shirts&search_return=all&Saleprice=%240.00+-+%2424.99"><img src="https://cdn6.bigcommerce.com/s-wrw5mek/product_images/uploaded_images/new-mob-banner.png" alt=""></a>
+    </div>
+
+    <div class="main-banner">
+         <a href="/golf-apparel/shirts/#/?Category0=Apparel&Category1=Shirts&search_return=all&Saleprice=%240.00+-+%2424.99"><img src="https://cdn6.bigcommerce.com/s-wrw5mek/product_images/uploaded_images/home-banners-06.png" alt=""></a>
+    </div>
+
+    <div class="deal-of-day cf">
+        <div class="part1">
+            <img src="https://cdn6.bigcommerce.com/s-wrw5mek/product_images/uploaded_images/dealoftheday-05.png" alt="">
+            <div class="checkboxes">
+                <span class="hours-bg">
+                    <img src="https://cdn6.bigcommerce.com/s-wrw5mek/product_images/uploaded_images/daily-deal-box-03.png" width="32px" height="32px" alt="">
+                    <img src="https://cdn6.bigcommerce.com/s-wrw5mek/product_images/uploaded_images/daily-deal-box-03.png" width="32px" height="32px" alt="">
+                    <span class="hoursLeft"></span>
+                </span>
+                <span class="colon">:</span>
+                <span class="minutes-bg">
+                    <img src="https://cdn6.bigcommerce.com/s-wrw5mek/product_images/uploaded_images/daily-deal-box-03.png" width="32px" height="32px" alt="">
+                    <img src="https://cdn6.bigcommerce.com/s-wrw5mek/product_images/uploaded_images/daily-deal-box-03.png" width="32px" height="32px" alt="">
+                    <span class="minutesLeft"></span>
+                </span>
+                <span class="colon">:</span>
+                <span class="seconds-bg">
+                    <img src="https://cdn6.bigcommerce.com/s-wrw5mek/product_images/uploaded_images/daily-deal-box-03.png" width="32px" height="32px" alt="">
+                    <img src="https://cdn6.bigcommerce.com/s-wrw5mek/product_images/uploaded_images/daily-deal-box-03.png" width="32px" height="32px" alt="">
+                    <span class="secondsLeft"></span>
+                </span>
+
+                <span class="time-amt hours">HOURS</span>
+                <span class="time-amt minutes">MINUTES</span>
+                <span class="time-amt seconds">SECONDS</span>
+            </div>
+        </div>
+        <div class="save-price"><span></span><br>OFF</div>
+        <div class="part2 home-dod">
+            
+            {{#if products.featured}}
+                {{> components/products/featured products=products.featured columns=theme_settings.homepage_featured_products_column_count}}
+            {{/if}}
+            
+        </div>
+    </div>
+    <div class="body-sign-up">
+        {{> components/common/body-subscription-form }}
+    </div>
+
+    <div class="featured-cats-1">
+        <ul>
+            <li>
+                <a href="/shoes/#/?Category0=Shoes&search_return=all&Brand=New+Balance"><img src="https://cdn6.bigcommerce.com/s-wrw5mek/product_images/uploaded_images/home-banners-09.png" alt=""></a>
+                <h2>New Balance Golf Shoes</h2>
+                <p>Comfortable, stylish and durable.</p>
+                <span><a href="/shoes/#/?Category0=Shoes&search_return=all&Brand=New+Balance">Shop Now &#187;</a></span>
+            </li>
+            <li>
+                <a href="/golf-balls/#/?Category0=Balls&Condition=USED&search_return=all&Brand=Titleist"><img src="https://cdn6.bigcommerce.com/s-wrw5mek/product_images/uploaded_images/home-banners-11.png" alt=""></a>
+                <h2>Save with Preowned</h2>
+                <p>Shop preowned Titleist Pro V1 & V1x Golf Balls.</p>
+                <span><a href="/golf-balls/#/?Category0=Balls&Condition=USED&search_return=all&Brand=Titleist">Shop Now &#187;</a></span>
+            </li>
+            <li>
+                <a href="/golf-clubs/irons/"><img src="https://cdn6.bigcommerce.com/s-wrw5mek/product_images/uploaded_images/golfetail-home-06.jpg" alt=""></a>
+                <h2>Save on Top Selling Irons</h2>
+                <p>Callaway, Cobra, Taylormade, and more.</p>
+                <span><a href="/golf-clubs/irons/">Shop Now &#187;</a></span>
+            </li>
+        </ul>
+    </div>
+
+    {{#if products.new}}
+        {{> components/products/new products=products.new columns=6}}
+    {{/if}}
+
+    <div class="featured-cats-1 second">
+        <ul>
+            <li>
+                <a href="/golf-bags/"><img src="https://cdn6.bigcommerce.com/s-wrw5mek/product_images/uploaded_images/golfetail-home-13.jpg" alt=""></a>
+                <h2>Golf Bags over 50% Off</h2>
+                <p>Callaway, Adams, Fujikura and more.</p>
+                <span><a href="/golf-bags/">Shop Now &#187;</a></span>
+            </li>
+            <li>
+                <a href="/sports-illustrated-offer/"><img src="https://cdn6.bigcommerce.com/s-wrw5mek/product_images/uploaded_images/new-si-banner.jpg" alt=""></a>
+                <h2>Sports Illustrated Special</h2>
+                <p>1 year subscription included on orders over $25.</p>
+                <span><a href="/sports-illustrated-offer/">View Offer &#187;</a></span>
+            </li>
+            <li>
+                <a href="/golf-apparel/outerwear/"><img src="https://cdn6.bigcommerce.com/s-wrw5mek/product_images/uploaded_images/golfetail-home-16.jpg" alt=""></a>
+                <h2>Save Big on Outerwear</h2>
+                <p>Adidas, Ashworth, Reebok and more.</p>
+                <span><a href="/golf-apparel/outerwear/">Shop Now &#187;</a></span>
+            </li>
+        </ul>
+    </div>
+    
+
+    <div class="why cf">
+        <h2>Why People Love Us</h2>
+        <hr class="faded">
+        <div class="left">
+            <img src="https://cdn6.bigcommerce.com/s-wrw5mek/product_images/uploaded_images/why-shop-07.png" alt="">
+            <h4>Free Shipping</h4>
+            <p>& 30 day returns on orders over $99.</p>
+        </div>
+        <div class="middle">
+
+            <div class="test-slider">
+                <div>
+                    <p>"Daily discount emails are the best thing about GolfEtail. They have some items that you won't find elsewhere and prices are always great!"<br>
+                        <span>Brandon B.</span>
+                    </p>
+                </div>
+                <div>
+                    <p>"Lowest prices on the net, super fast shipping, overall great website!"<br>
+                        <span>Mark W.</span>
+                    </p>
+                </div>
+                <div>
+                    <p>"Quick, efficient and the order is always in perfect condition!"<br>
+                        <span>Nick L.</span>
+                    </p>
+                </div>
+                <div>
+                    <p>"I always check for their deals even when I don't need to purchase anything! I don't want to miss out on any great deals"<br>
+                        <span>Craig P.</span>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+        <div class="right">
+            <img src="https://cdn6.bigcommerce.com/s-wrw5mek/product_images/uploaded_images/why-shop-10.png" alt="">
+            <h4>For Golfers, by Golfers</h4>
+            <p>Our expert staff is standing by to help you.</p>
+        </div>
+    </div>
+
+
+
+    <div class="brands-list">
+        <ul>
+            <li><a href="/brands/taylormade.html"><img src="https://cdn6.bigcommerce.com/s-wrw5mek/product_images/uploaded_images/golfetail-home-desktop-05.png" alt=""></a></li>
+            <li><a href="/brands/callaway.html"><img src="https://cdn6.bigcommerce.com/s-wrw5mek/product_images/uploaded_images/golfetail-home-desktop-07.png" alt=""></a></li>
+            <li><a href="/brands/puma.html"><img src="https://cdn6.bigcommerce.com/s-wrw5mek/product_images/uploaded_images/new-brands-10.png" alt=""></a></li>
+            <li><a href="/brands/adidas.html"><img src="https://cdn6.bigcommerce.com/s-wrw5mek/product_images/uploaded_images/golfetail-home-desktop-12.png" alt=""></a></li>
+            <li><a href="/brands/cobra.html"><img src="https://cdn6.bigcommerce.com/s-wrw5mek/product_images/uploaded_images/new-brands-05.png" alt=""></a></li>
+            <li><a href="/brands/adams.html"><img src="https://cdn6.bigcommerce.com/s-wrw5mek/product_images/uploaded_images/new-brands-07.png" alt=""></a></li>
+        </ul>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+var google_tag_params = {
+ecomm_pagetype: 'home',
+ecomm_prodid: '',
+ecomm_totalvalue: 0
+};
+</script>
+
+{{/partial}}
+{{> layout/base}}

@@ -1,0 +1,48 @@
+---
+product:
+    videos:
+        limit: {{theme_settings.productpage_videos_count}}
+    reviews:
+        limit: {{theme_settings.productpage_reviews_count}}
+    related_products:
+        limit: {{theme_settings.productpage_related_products_count}}
+    similar_by_views:
+        limit: {{theme_settings.productpage_similar_by_views_count}}
+products:
+    featured:
+        limit: 1
+---
+{{#partial "page"}}
+
+    <script type="text/javascript">
+    var pr_style_sheet="http://cdn.powerreviews.com/aux/12505/9206/css/express.css";
+    </script>
+    <script type="text/javascript" src="http://cdn.powerreviews.com/repos/12505/pr/pwr/engine/js/full.js"></script>
+
+    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+    {{#each product.shipping_messages}}
+        {{> components/common/alert-info message}}
+    {{/each}}
+
+    <div itemscope itemtype="http://schema.org/Product">
+
+        {{> components/products/product-view}}
+
+        {{#if settings.show_product_reviews}}
+            {{> components/products/reviews reviews=product.reviews product=product urls=urls}}
+        {{/if}}
+
+    </div>
+
+{{/partial}}
+{{> layout/base}}
+
+<script>
+    fbq('track', 'ViewContent', {
+        content_type: 'product', //either 'product' or 'product_group'
+        content_ids: '{{product.sku}}', //array of one or more product SKUs in the page
+        value: '{{product.price.without_tax.value}}',    //OPTIONAL, but highly recommended
+        currency: 'USD' //REQUIRED if you a pass value
+    });
+</script>

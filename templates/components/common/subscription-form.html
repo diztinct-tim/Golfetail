@@ -1,0 +1,24 @@
+<div class="newsletter-container">
+    <div class="left-signup-container">
+        <h5 class="footer-info-heading">Sign up for daily savings!</h5>
+        <p>Joing our newsletter for exclusive savings.</p>
+    </div>
+    <div class="middle-signup-container">
+        <!-- <form id="Optin3" class="form" action="https://click.bsftransmit3.com/OptIn.aspx?OptinFormID=3&26241823=1022" method="post" name="OptinForm3"> -->
+        <form id="Optin3" class="form" action="https://click.publicaster.com/OptIn.aspx?OptinFormID=3&26241823=1022" method="post" name="OptinForm3">
+            <fieldset class="form-fieldset">
+                <input type="hidden" name="OptinFormID" value="3" />
+                <input type="hidden" name="26241823" value="1022" />
+                <input type="hidden" name="check" value="1">
+                <div class="form-field">
+                    <label class="form-label u-hiddenVisually" for="nl_email">{{lang 'common.email_address'}}</label>
+                    <div class="form-prefixPostfix">
+                        <input class="form-input" id="nl_email" name="UEmail" type="email" value="{{customer.email}}" placeholder="{{lang 'newsletter.email_placeholder'}}">
+                        <input class="button button--primary form-prefixPostfix-button--postfix" type="submit" value="JOIN &#187;" onClick="ga('send', 'event', { eventCategory: 'email', eventAction: 'signup'}); fbq('track', 'CompleteRegistration');">
+                        <input type="hidden" name="field65" value="" />
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>

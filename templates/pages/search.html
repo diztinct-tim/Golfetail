@@ -1,0 +1,33 @@
+---
+product_results:
+    limit: {{theme_settings.searchpage_products_per_page}}
+---
+{{inject 'categoryTree' forms.search.category_options}}
+{{inject 'searchProductsPerPage' theme_settings.searchpage_products_per_page}}
+{{#partial "head"}}
+    {{#if pagination.product_results.previous}}
+        <link rel="prev" href="{{pagination.product_results.previous}}">
+    {{/if}}
+    {{#if pagination.product_results.next}}
+        <link rel="next" href="{{pagination.product_results.next}}">
+    {{/if}}
+{{/partial}}
+
+{{#partial "page"}}
+
+<!-- <script type="text/javascript" src="https://nxtcfm.s3.amazonaws.com/83803897e540975bd541679556a95e24-ns.js"></script> -->
+
+<section class="page">
+ 
+     <main class="page-content">
+
+        <div id="faceted-search-container" class="search-refinements"></div>
+        
+        <div id="product-listing-container" class="main-search-container">
+            
+        </div>
+    </main>
+</section>
+
+{{/partial}}
+{{> layout/base}}

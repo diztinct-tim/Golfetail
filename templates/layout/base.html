@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <title>{{ head.title }}</title>
+        {{{ head.meta_tags }}}
+        {{{ head.config }}}
+        {{#block "head"}} {{/block}}
+
+        <link href="{{ head.favicon }}" rel="shortcut icon">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        {{{stylesheet '/assets/css/theme.css'}}}
+        {{ getFontsCollection }}
+        <script src="{{cdn '/assets/modernizr-custom.js'}}"></script>
+        <link href='https://fonts.googleapis.com/css?family=Roboto:400,900,300,400italic,500,700|Roboto+Condensed:700' rel='stylesheet' type='text/css'>
+
+        {{{head.scripts}}}
+        {{{head.rsslinks}}} 
+
+        {{inject 'themeImageSizes' theme_images}}
+        {{inject 'genericError' (lang 'common.generic_error')}}
+        {{inject 'maintenanceMode' settings.maintenance}}
+
+        <!-- old nextopia -->
+        <script type="text/javascript" src="//nxtcfm.s3.amazonaws.com/83803897e540975bd541679556a95e24-ns.js"></script> 
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script>var dizj = jQuery.noConflict();</script>
+        <script type="text/javascript" src="https://www.golfetail.com/content/diztinct.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://www.golfetail.com/content/diztinct.css">
+
+        <!-- new nextopia 
+        <script type="text/javascript" src="//cdn.nextopia.net/v1.5.1/83803897e540975bd541679556a95e24.js" async></script> -->
+
+        <!-- Facebook Pixel Code -->
+        <script>
+        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+        n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+        document,'script','//connect.facebook.net/en_US/fbevents.js');
+
+        fbq('init', '817549384987388');
+        fbq('track', "PageView");</script>
+        <noscript><img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=817549384987388&ev=PageView&noscript=1"
+        /></noscript>
+        <!-- End Facebook Pixel Code -->
+
+        <!-- Start Visual Website Optimizer Asynchronous Code -->
+        <script type='text/javascript'>
+        var _vwo_code=(function(){
+        var account_id=233663,
+        settings_tolerance=2000,
+        library_tolerance=2500,
+        use_existing_jquery=false,
+        // DO NOT EDIT BELOW THIS LINE
+        f=false,d=document;return{use_existing_jquery:function(){return use_existing_jquery;},library_tolerance:function(){return library_tolerance;},finish:function(){if(!f){f=true;var a=d.getElementById('_vis_opt_path_hides');if(a)a.parentNode.removeChild(a);}},finished:function(){return f;},load:function(a){var b=d.createElement('script');b.src=a;b.type='text/javascript';b.innerText;b.onerror=function(){_vwo_code.finish();};d.getElementsByTagName('head')[0].appendChild(b);},init:function(){settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=d.createElement('style'),b='body{opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;}',h=d.getElementsByTagName('head')[0];a.setAttribute('id','_vis_opt_path_hides');a.setAttribute('type','text/css');if(a.styleSheet)a.styleSheet.cssText=b;else a.appendChild(d.createTextNode(b));h.appendChild(a);this.load('//dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&r='+Math.random());return settings_timer;}};}());_vwo_settings_timer=_vwo_code.init();
+        </script>
+        <!-- End Visual Website Optimizer Asynchronous Code -->
+
+        <!-- begin Convert Experiments code-->
+        <script type="text/javascript" src="//cdn-3.convertexperiments.com/js/10002993-10003134.js"></script>
+        <!-- end Convert Experiments code -->
+
+    </head>
+    <body>
+
+        <!-- Google Tag Manager -->
+        <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-KD5R5C"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-KD5R5C');</script>
+        <!-- End Google Tag Manager -->
+
+        <div class="filter-overlay"></div>
+
+        <div class="icons-svg-sprite">{{> components/common/icons/icon-defs }}</div>
+
+        {{#if settings.privacy_cookie}} 
+            {{> components/common/cookie}}
+        {{/if}}
+
+        {{> components/common/header }}
+        {{> components/common/body }}
+        {{> components/common/footer }}
+
+        <script>
+            function startupApp(stencilBootstrap) {
+                stencilBootstrap("{{template_file}}", {{jsContext}}).load();
+            }
+        </script>
+
+        {{#if in_production}}
+            <script src="{{cdn '/assets/js/bundle.js'}}"></script>
+            <script>
+                startupApp(stencilBootstrap);
+            </script>
+        {{else}}
+            <script src="{{cdn '/assets/jspm_packages/system.js'}}"></script>
+            <script src="{{cdn '/assets/config.js'}}"></script>
+            <script src="{{cdn '/assets/js/dependency-bundle.js'}}"></script>
+            <script>
+                System.import("js/app").then(function(){ startupApp(stencilBootstrap)});
+            </script>
+        {{/if}}
+        {{{footer.scripts}}}
+
+        <!-- old nextopia -->
+        <script type="text/javascript" src="//nxtcfm.s3.amazonaws.com/83803897e540975bd541679556a95e24-ac.js"></script>
+
+        <script>
+
+            var currentURL = window.location.href;
+            if( currentURL.indexOf("searchresults") >= 0 ){
+                fbq('track', 'Search');
+                console.log("Search Page");
+            }
+
+        </script>
+
+    </body>
+
+</html>

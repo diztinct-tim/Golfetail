@@ -1,0 +1,38 @@
+<article class="card {{#if alternate}}card--alternate{{/if}}">
+    <figure class="card-figure">
+        <a href="{{url}}"><img class="card-image" src="{{getImage image 'gallery' (cdn theme_settings.default_image_product)}}" alt="{{image.alt}}"></a>
+        
+    </figure>
+
+    <div class="card-body">
+
+        <h4 class="card-title">
+            <a href="{{url}}">{{name}}</a>
+        </h4>
+
+        <div class="card-text">
+
+            {{#if price.without_tax}}
+             
+                <div class="price-section"  {{#if schema_org}}itemprop="offers" itemscope itemtype="http://schema.org/Offer"{{/if}}>
+                    <span class="price price--withoutTax">{{price.without_tax.formatted}}</span>
+                    {{#if price.rrp_without_tax}}
+                         <span class="price price--rrp">Retail {{price.rrp_without_tax.formatted}}</span>
+                    {{/if}}
+                    {{#if schema_org}}
+                        <meta itemprop="price" content="{{price.without_tax.value}}">
+                        <meta itemprop="priceCurrency" content="{{currency_selector.active_currency_code}}">
+                    {{/if}}
+                    <span class="dod-dollars-off"></span>
+                    <a class="dod-home-see-details"href="{{url}}">SEE DETAILS &#187</a>
+                </div>
+            
+            {{/if}}
+
+            
+
+        </div>
+
+
+    </div>
+</article>

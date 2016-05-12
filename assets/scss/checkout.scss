@@ -1,0 +1,136 @@
+// =============================================================================
+// Stencil Checkout  - Customize the checkout experience
+// =============================================================================
+
+// .header-logo h1 a {
+// #LogoContainer{
+.header-logo{
+	background: url(https://cdn6.bigcommerce.com/s-wrw5mek/product_images/uploaded_images/desk-logo-05.png);
+	background-repeat: no-repeat;
+	background-position:50% 50%;
+	background-size: 220px auto !important;
+	display: block;
+}
+.Logo1stWord {
+    display: none;
+}
+.ExpressCheckoutBlock .step {
+	background-color: #29449c;
+}
+#CreateAccountButton, #LoginButton, .billingButton.btn, .shippingButton.btn, #CheckoutStepShippingProvider .btn, #apply_code {
+	text-transform: none;
+	letter-spacing: 0px;
+	min-width: 120px;
+	background-color: #00885c;
+	font-size: 16px;
+	font-weight: 500;
+	height: 40px;
+	line-height: 0px;
+	font-family: "Roboto", Helvetica, san-serif;
+}
+#CreateAccountButton:hover, #LoginButton:hover, .billingButton.btn:hover, .shippingButton.btn:hover, #CheckoutStepShippingProvider .btn:hover, #apply_code:hover {
+    border: 1px solid #00885c;
+    color: #00885c;
+    background-color: #fff;
+}
+.AddBillingAddress dt, .AddShippingAddress dt {
+	clear: both;
+}
+#CheckoutStepBillingAddress .FloatLeft, #CheckoutStepShippingAddress .FloatLeft {
+	width: 100%;
+}
+.SelectBillingAddress > img.FloatLeft, .clear.AddBillingAddress > img.FloatLeft{
+	width: auto !important;
+}
+.ExpressCheckoutCompletedContent {
+	padding-bottom: 20px !important;
+}
+#bottom_payment_button, #CheckoutStepPaymentDetails .btn {
+	    border-color: #C86400;
+        color: #FFF;
+        background-color: #F1892D;
+        box-shadow: 0px 2px 0px #C86400;
+        padding: 18px 0px;
+        font-weight: 800;
+        font-size: 20px;
+        text-transform: none !important;
+        line-height: 15px;
+        height: 50px;
+        letter-spacing: 0 !important;
+        width: 100% !important;
+}
+#bottom_payment_button:hover, #CheckoutStepPaymentDetails .btn:hover {
+	    box-shadow: none;
+        border: medium none;
+        background-color: #E88125;
+        color: #fff !important;
+}
+#payment_options .PTB20 {
+	padding-bottom: 0px;
+}
+#apply_code {
+	min-width: 80px !important;
+}
+#CheckoutStepConfirmation .ProductPrice {
+	font-style: normal;
+}
+#uniform-PayflowPro_ccexpy {
+	margin-top: 20px !important;
+}
+#CheckoutStepPaymentDetails .HorizontalFormContainer {
+	max-width: 720px;
+}
+#CheckoutStepPaymentDetails .ProductPrice {
+	font-size: 20px !important;
+	font-style: normal !important;
+	font-weight: 600 !important;
+	font-family: "Roboto", Helvetica, san-serif;
+	color: #29449c;
+}
+.ExpressCheckoutContent .HorizontalFormContainer dt:nth-of-type(8) {
+	font-size: 20px !important;
+	font-style: normal !important;
+	font-weight: 400 !important;
+	font-family: "Roboto", Helvetica, san-serif;
+}
+.btn.js-share-button {
+    border-color: #C86400 !important;
+    color: #FFF !important;
+    background-color: #F1892D !important;
+    box-shadow: 0px 2px 0px #C86400 !important;
+    text-transform: none !important;
+    letter-spacing: 0 !important;
+}
+.btn.js-share-button:hover {
+    box-shadow: none;
+    border: medium none;
+    background-color: #E88125;
+    color: #fff !important;
+    font-family: "Roboto", Helvetica, san-serif;
+}
+#SimilarMultiProductsByCustomerViews .btn.icon-Add.To.Cart {
+	text-transform: none;
+	letter-spacing: 0px;
+	background-color: #00885c;
+	font-family: "Roboto", Helvetica, san-serif;
+}
+#SimilarMultiProductsByCustomerViews .btn.icon-Add.To.Cart:hover {
+	background-color: #fff;
+	border: 1px solid #E88125;
+	color: #E88125;
+}
+@media only screen and (min-width: 768px) {
+    
+#CheckoutStepBillingAddress form .HorizontalFormContainer dd {
+	display: block;
+	width: 50%;
+}
+#CheckoutStepShippingAddress form .HorizontalFormContainer dd {
+	display: block;
+	width: 50%;
+}
+#bottom_payment_button, #CheckoutStepPaymentDetails .btn {
+        width: 240px !important;
+}
+
+}

@@ -1,0 +1,11 @@
+<nav>
+    {{#if brand.faceted_search_enabled}}
+        {{> components/faceted-search/index brand}}
+    {{else}}
+        {{#if shop_by_brand}}
+        <div class="sidebarBlock">
+            <h5 class="sidebarBlock-heading">{{lang 'brand.label'}}</h5>
+        </div>
+        {{/if}}
+    {{/if}}
+</nav>

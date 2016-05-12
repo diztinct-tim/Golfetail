@@ -1,0 +1,407 @@
+// =============================================================================
+// FOOTER (CSS)
+// =============================================================================
+
+
+// Layout and columns
+// -----------------------------------------------------------------------------
+//
+// 1. To enable the grid's display: inline-block; to work properly, we need to
+//    remove the white-space that it creates between columns with font-size: 0;
+// 2. Re-set the font-size that was reduced to 0 in point 1 for children.
+//
+// -----------------------------------------------------------------------------
+
+.footer {
+    background-color: #666;
+    border-top: none;
+    padding: 0px;
+}
+
+.footer-info {
+    @include grid-row($behavior: nest);
+    font-size: 0; // 1
+}
+
+.footer-info-col {
+    @include grid-column(12);
+    display: inline-block;
+    float: none;
+    font-size: fontSize("base"); // 2
+    margin-bottom: spacing("double");
+    text-align: center;
+    vertical-align: top;
+
+    @include breakpoint("small") {
+        text-align: left;
+        width: width("6/12");
+    }
+
+    @include breakpoint(768px) {
+        width: width("4/12");
+    }
+
+    &--small { // .footer-info-col--small
+
+        @include breakpoint(768px) {
+            width: width("2/12");
+        }
+    }
+
+    > :first-child {
+        margin-top: 0;
+    }
+
+    > :last-child {
+        margin-bottom: 0;
+    }
+}
+
+
+// Content
+// -----------------------------------------------------------------------------
+
+.footer-info-heading {
+    color: $footer-heading-fontColor;
+    font-size: fontSize("base");
+    text-transform: inherit;
+}
+
+.footer-info-list {
+    list-style: none;
+    margin-left: 0;
+
+    a {
+        color: color("link");
+        text-decoration: none;
+    }
+}
+
+.footer-copyright {
+
+    > .powered-by {
+        color: color("greys", "light");
+        font-size: fontSize("tiny");
+        margin: 0;
+    }
+
+    a {
+        color: color("greys", "light");
+        text-decoration: none;
+
+        // scss-lint:disable NestingDepth
+        &:hover {
+            color: color("greys", "darker");
+        }
+    }
+}
+
+.footer-info-col.news-signup {
+    background: #555;
+    padding: 0 10px;
+}
+.left-signup-container > p {
+    text-align: center;
+}
+.news-signup .footer-info-heading {
+    text-transform: capitalize;
+    color: #FFF;
+    font-size: 18px;
+    font-family: $font-stack;
+    font-weight:700;
+    margin-bottom:0px;
+    margin-top: 30px;
+    text-align: center;
+}
+.news-signup {
+    font-family:$font-stack;
+    font-size:14px;
+    color:#fff;
+}
+.button.button--primary.form-prefixPostfix-button--postfix {
+    margin-left: 0px;
+    width: 65px;
+    padding: 0px;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-family: $font-stack;
+    font-weight: 700;
+    background:$green;
+    border:1px solid #ccc;
+    border-radius: 0px;
+    box-shadow: 5px 5px 8px -7px rgba(0, 0, 0, 0.4) inset;
+}
+#nl_email {
+    height: 40px;
+    border-radius: 0px;
+    font-style: italic;
+    border: 1px solid #ccc;
+    border-right: none;
+    box-shadow: 7px 7px 8px -7px rgba(0, 0, 0, 0.4) inset;
+}
+.footer{
+    margin-top: -21px;
+}
+.footer-info-col.news-signup {
+    width: 100%;
+    margin-bottom: 22px;
+}
+.footer-info-col{
+    width:50%;
+}
+.footer-info-heading {
+    color: #fff;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-family: "Roboto Condensed";
+    font-weight: 700;
+    text-align: left;
+    margin-bottom:5px
+}
+.footer-info-list a {
+    color: #fff;
+    font-family:$font-stack;
+}
+.footer-info-col li {
+    text-align: left;
+    padding: 2px 0px 3px 0px;
+}
+.footer-info-col.social-icons {
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 125px;
+}
+.social-icons ul {
+    list-style: none;
+    text-align:center
+}
+.social-icons ul li{
+    display:inline-block;
+    margin:5px
+}
+.news-signup > h5 {
+    text-align: center;
+}
+.secure{
+    padding:0px 20px;
+}
+.secure p{
+    font-size: 12px;
+    color: #FFF;
+    width: 110px;
+    margin-bottom: 0px;
+    display: inline-block;
+    vertical-align: bottom;
+    margin-left: 10px;
+}
+.secure ul{
+    margin-left:0px;
+    text-align:left;
+    margin-top:15px;
+}
+.secure ul li img{
+    display:inline-block;
+    margin-right:5px;
+    width:50px;
+}
+.secure ul li {
+    display: inline-block;
+}
+.copyright {
+    font-size: 12px;
+    color: #555;
+    background: #ececec;
+    text-align: center;
+    padding: 10px 20px;
+    width: calc(100% - 10px);
+}
+.copyright p{
+    margin-bottom:0px;
+}
+.form-prefixPostfix .button {
+    height: 40px;
+}
+.desktop-social.social-icons {
+    display: none;
+}
+a#bbblink{
+    display:inline-block !important;
+}
+
+
+
+
+
+@media only screen and (min-width: 768px) {
+
+
+    .footer > .container{
+        width:100%;
+        max-width:none;
+    }
+    .news-signup .footer-info-heading{
+        text-align:left;
+    }
+    .left-signup-container > p {
+        margin-bottom: 15px;
+    }
+    .footer-info{
+        margin-left:0px;
+    }
+    .footer-info-col.news-signup {
+        width: 65%;
+        margin-bottom: 0px;
+        padding: 0px 0px 10px 20px;
+        margin-right: 5%;
+    }
+    .desktop-top-footer {
+        background: #555;
+        width:calc(100% - 10px);
+    }
+    .desktop-social.social-icons {
+        width: 30%;
+        display: inline-block;
+    }
+    .desktop-social.social-icons ul{
+        margin-top:85px;
+        margin-left:0px;
+    }
+    .news-signup > p {
+        margin-bottom: 10px;
+    }
+    .news-signup .form-field{
+        margin-bottom:0px;
+    }
+    .footer-info-col {
+        width: 33%;
+    }
+    .footer-info-col.social-icons{
+        display:none;
+    }
+    .footer-info-col.footer-info-col--small {
+        margin-top: 30px;
+    }
+    .secure > img{
+        margin-right: 20px;
+    }
+    .secure p{
+        display: inline-block;
+        width: 105px;
+        text-align: left;
+        vertical-align: bottom;
+        float: none;
+        margin-left: 10px;
+    }
+    .secure ul{
+        text-align:left;
+    }
+    .copyright > p > span {
+        display: none;
+    }
+    .secure {
+        padding: 0px 20px 20px 20px;
+    }
+    .left-signup-container > p {
+        text-align: left;
+    }
+    .footer-info-col.social-icons{
+        padding-right:40px;
+    }
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+@media only screen and (min-width: 992px) {
+
+
+
+
+
+    .footer-info-col, .secure {
+        width: 25%;
+        display:inline-block;
+    }
+    .desktop-top-footer > .top-container{
+        max-width:1200px;
+        margin:0 auto;
+    }
+    .footer-info > .bottom-container{
+        max-width:1200px;
+        margin:0 auto;
+    }
+    .secure{
+        padding:0px;
+        margin-top:30px;
+    }
+    .footer-info-col.news-signup > h5, .footer-info-col.news-signup > p {
+        width: 50% !important;
+        padding-left: 20px;
+    }
+    .footer-info-col.news-signup form.form {
+        width: 100%;
+        display: inline-block;
+    }
+    .footer-info-col.news-signup{
+        width:70%;
+        margin-right:0px;
+    }
+    .left-signup-container {
+        width: 49%;
+        display: inline-block;
+        vertical-align: top;
+        margin-top: 30px;
+    }
+    .middle-signup-container {
+        width: 50%;
+        display: inline-block;
+        vertical-align: top;
+        margin-top: 35px;
+    }
+    .desktop-container > .topMenu.cf, .desktop-container > .logo {
+        display: block;
+    }
+    .desktop-social.social-icons ul {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .news-signup .footer-info-heading{
+        margin-top:0px;
+    }
+    .left-signup-container > p{
+        font-size:16px;
+    }
+    .news-signup .footer-info-heading{
+        font-size:20px;
+    }
+
+
+
+
+
+
+
+
+}
+
+
+@media only screen and (min-width: 1200px) {
+
+    .secure p {
+        width: 135px;
+    }
+
+}

@@ -1,0 +1,360 @@
+<script type="text/javascript">
+
+var productId = {{product.id}};
+console.log('{{product.id}}');
+console.log('{{product.sku}}');
+var price = '{{product.price.without_tax.value}}';
+var finalPrice = price.replace("$","");
+var totalValue{{product.id}} = price;
+console.log(finalPrice);
+
+var totalValue{{product.id}} = Number(totalValue{{product.id}}[totalValue{{product.id}}.length-1]);
+
+var google_tag_params = {
+ecomm_prodid: '{{product.sku}}', 
+ecomm_pagetype: 'product',
+ecomm_totalvalue: finalPrice
+};
+
+</script>
+
+
+<div class="productView">
+    {{#each product.reviews.messages}}
+        {{#if error}}
+            {{>components/common/alert-error error}}
+        {{/if}}
+        {{#if success}}
+            {{>components/common/alert-success success}}
+        {{/if}}
+    {{/each}}
+
+
+
+    <section class="productView-images" data-image-gallery>
+        <figure class="productView-image"
+                data-image-gallery-main
+                data-zoom-image="{{getImage product.main_image 'zoom' (cdn theme_settings.default_image_product)}}"
+                >
+            <a href="{{getImage product.main_image 'zoom' (cdn theme_settings.default_image_product)}}">
+                <img src="{{getImage product.main_image 'product' (cdn theme_settings.default_image_product)}}" alt="{{product.main_image.alt}}" data-main-image>
+            </a>
+        </figure>
+        <ul class="productView-thumbnails">
+            {{#each product.images}}
+                <li class="productView-thumbnail">
+                    <a
+                        class="productView-thumbnail-link"
+                        href="{{getImage this 'product' (cdn ../theme_settings.default_image_product)}}"
+                        data-image-gallery-item
+                        data-image-gallery-new-image-url="{{getImage this 'product' (cdn ../theme_settings.default_image_product)}}"
+                        data-image-gallery-zoom-image-url="{{getImage this 'zoom' (cdn ../theme_settings.default_image_product)}}">
+                        <img src="{{getImage this 'thumb' (cdn ../theme_settings.default_image_product)}}" alt="{{this.alt}}">
+                    </a>
+                </li>
+            {{/each}}
+        </ul>
+    </section>
+
+
+
+
+<!-- <div class="right-side-desk"> -->
+<!-- <div class="right-side"> -->
+    
+    <section class="productView-details name-rating">
+        <div class="productView-product">
+            <h1 class="productView-title" itemprop="name">{{product.title}}</h1>
+
+
+
+
+            <div class="pr_snippet_product {{product.sku}}">
+            <script type="text/javascript">POWERREVIEWS.display.snippet(document, { pr_page_id : "{{product.sku}}" });</script>
+            </div>
+            
+            {{product.detail_messages}}
+            <dl class="productView-info">
+                {{#if product.bulk_discount_rates.length}}
+                    <dt class="productView-info-name">{{lang 'products.bulk_pricing.title'}}</dt>
+                    <dd class="productView-info-value">
+                        <a href="{{product.url}}"
+                            {{#unless is_ajax }}data-reveal-id="bulkPricingModal" {{/unless}}>
+                            {{lang 'products.bulk_pricing.view'}}
+                        </a>
+                    </dd>
+
+                    <div id="bulkPricingModal" class="modal modal--small" data-reveal>
+                        <div class="modal-header">
+                            <h2 class="modal-header-title">{{lang 'products.bulk_pricing.modal_title'}}</h2>
+                            <a href="#" class="modal-close" aria-label="Close"><span aria-hidden="true">&#215;</span></a>
+                        </div>
+                        <div class="modal-body">
+                            <p>{{lang 'products.bulk_pricing.instructions'}}</p>
+                            <ul>
+                            {{#each product.bulk_discount_rates}}
+                                <li>
+                                    {{lang 'products.bulk_pricing.range' min=min max=max}}
+                                    {{#if type '===' 'percent'}}
+                                        {{lang 'products.bulk_pricing.percent' discount=discount.formatted}}
+                                    {{/if}}
+                                    {{#if type '===' 'fixed'}}
+                                        {{lang 'products.bulk_pricing.fixed' discount=discount.formatted}}
+                                    {{/if}}
+                                    {{#if type '===' 'price'}}
+                                        {{lang 'products.bulk_pricing.price' discount=discount.formatted}}
+                                    {{/if}}
+                                </li>
+                            {{/each}}
+                            </ul>
+                        </div>
+                    </div>
+                {{/if}}
+
+                
+            </dl>
+        </div>
+
+
+
+    </section>
+
+        
+        <section class="top-prod-wrap cf">
+
+
+
+            <section class="productView-details">
+                <div class="productView-options">
+                    {{#if product.release_date }}
+                        <p>{{product.release_date}}</p>
+                    {{/if}}
+
+                    <form class="form" method="post" action="{{product.cart_url}}" enctype="multipart/form-data"
+                          data-cart-item-add>
+                        <input type="hidden" name="action" value="add">
+                        <input type="hidden" name="product_id" value="{{product.id}}"/>
+
+
+                            {{#each product.customizations}}
+                                {{{dynamicComponent 'components/products/customizations'}}}
+                            {{/each}}
+                        <div data-product-option-change id="attr-f">
+                            {{#each product.options}}
+                                {{{dynamicComponent 'components/products/options'}}}
+                            {{/each}}
+                        </div>
+
+                        {{#if product.event_date}}
+                            <div class="form-field">
+                                <label class="form-label form-label--alternate form-label--inlineSmall">
+                                {{product.event_date.name}}:
+                                <!-- <small>{{lang 'common.required'}}</small> -->
+                                </label>
+                                <select class="form-select form-select--date" name="EventDate[Mth]" required>
+                                    <option value="">{{lang 'common.month'}}</option>
+                                    {{#enumerate 1 12}}
+                                        <option value="{{this}}">{{getShortMonth this}}</option>
+                                    {{/enumerate}}
+                                </select>
+                                <select class="form-select form-select--date" name="EventDate[Day]" required>
+                                    <option value="">{{lang 'common.day'}}</option>
+                                    {{#enumerate 1 31}}
+                                        <option value="{{this}}">{{this}}</option>
+                                    {{/enumerate}}
+                                </select>
+                                <select class="form-select form-select--date" name="EventDate[Yr]" required>
+                                    <option value="">{{lang 'common.year'}}</option>
+                                    {{#enumerate product.event_date.earliest_year product.event_date.latest_year}}
+                                        <option value="{{this}}" >{{this}}</option>
+                                    {{/enumerate}}
+                                </select>
+                            </div>
+                        {{/if}}
+
+                        <div class="form-field form-field--stock{{#unless product.stock_level}} u-hiddenVisually{{/unless}}">
+                            <label class="form-label form-label--alternate">{{lang 'products.current_stock'}}</label>
+                            <span data-product-stock>{{product.stock_level}}</span>
+                        </div>
+
+            <div class="top-right-desk">
+
+                    <p class="toggle-map-price id-hidden">Click here to view price</p>
+                    {{#if product.price}}
+                        <div class="productView-price">
+                            {{> components/products/price price=product.price schema_org=true}}
+                        </div>
+                    {{/if}}
+
+                    <div class="free-ship-instock">
+                        <span>FREE shipping over $99</span>
+                        <p><img src="https://cdn6.bigcommerce.com/s-wrw5mek/product_images/uploaded_images/green-check-05.png" alt="">In Stock Ready to Ship</p>
+                    </div>
+
+                    {{#each product.custom_fields}}
+                        <div class="custom-field {{name}}">
+                            <dt class="productView-info-name {{name}}">{{name}}:</dt>
+                            <dd class="productView-info-value">{{{value}}}</dd>
+                        </div>
+                    {{/each}}
+
+                    <div class="gray-bg">
+
+                        {{#if product.can_purchase}}
+                            <div class="form-field form-field--increments">
+                                <div class="form-increment" data-quantity-change>
+                                    <!-- I took out the original incremental input field.. If something is breaks down the road. Change below back -->
+                                    <span class="qty-span">QTY</span>
+                                    <select id="qty_" name="qty[]" class="">
+                                        <option selected="selected" value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="alertBox productAttributes-message" style="display:none">
+                                <div class="alertBox-column alertBox-icon">
+                                    <icon glyph="ic-success" class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path></svg></icon>
+                                </div>
+                                <p class="alertBox-column alertBox-message"></p>
+                            </div>
+
+                            <div class="form-action">
+                                <input id="form-action-addToCart" data-wait-message="{{lang 'products.adding_to_cart'}}" class="button button--primary" type="submit"
+                                       value="{{#if product.pre_order}}{{lang 'products.pre_order'}}{{else}}{{lang 'products.add_to_cart'}}{{/if}} &#187" onclick="fbq('track', 'AddToCart', {
+        content_ids: '{{product.sku}}',
+        content_type: 'product',
+        value: '{{product.price.without_tax.value}}',
+        currency: 'USD'
+    });
+">
+                            </div>
+
+                        {{/if}}
+
+                        {{#if product.out_of_stock}}
+                            {{#if product.out_of_stock_message}}
+                                {{>components/common/alert-error product.out_of_stock_message}}
+                            {{else}}
+                                {{>components/common/alert-error (lang 'products.sold_out')}}
+                            {{/if}}
+                        {{/if}}
+
+                    </form>
+
+                        <form class="form wishlist-form" method="post" action="{{product.add_to_wishlist_url}}" data-wishlist-add>
+                            <div class="form-action">
+                                <input type="hidden" name="variation_id" value="">
+                                <input class="button" type="submit" value="Add to My Wishlist">
+                            </div>
+                        </form>
+
+                        <span class="sku">SKU: {{product.sku}}</span>
+
+                        {{>components/common/share}}
+
+                   </div> <!-- end gray bg -->
+
+            </section>
+        </section>
+
+
+        <div class="prod-right-wrap cf">
+
+            <section class="deal-of-day cf pp-dod">
+                <div class="part1">
+                    <img src="https://cdn6.bigcommerce.com/s-wrw5mek/product_images/uploaded_images/dealoftheday-05.png" alt="">
+                    <div class="checkboxes">
+                        <span class="hours-bg">
+                            <img src="https://cdn6.bigcommerce.com/s-wrw5mek/product_images/uploaded_images/daily-deal-box-03.png" width="32px" height="32px" alt="">
+                            <img src="https://cdn6.bigcommerce.com/s-wrw5mek/product_images/uploaded_images/daily-deal-box-03.png" width="32px" height="32px" alt="">
+                            <span class="hoursLeft"></span>
+                        </span>
+                        <span class="colon">:</span>
+                        <span class="minutes-bg">
+                            <img src="https://cdn6.bigcommerce.com/s-wrw5mek/product_images/uploaded_images/daily-deal-box-03.png" width="32px" height="32px" alt="">
+                            <img src="https://cdn6.bigcommerce.com/s-wrw5mek/product_images/uploaded_images/daily-deal-box-03.png" width="32px" height="32px" alt="">
+                            <span class="minutesLeft"></span>
+                        </span>
+                        <span class="colon">:</span>
+                        <span class="seconds-bg">
+                            <img src="https://cdn6.bigcommerce.com/s-wrw5mek/product_images/uploaded_images/daily-deal-box-03.png" width="32px" height="32px" alt="">
+                            <img src="https://cdn6.bigcommerce.com/s-wrw5mek/product_images/uploaded_images/daily-deal-box-03.png" width="32px" height="32px" alt="">
+                            <span class="secondsLeft"></span>
+                        </span>
+
+                        <span class="time-amt hours">HOURS</span>
+                        <span class="time-amt minutes">MINUTES</span>
+                        <span class="time-amt seconds">SECONDS</span>
+                    </div>
+                </div>
+                <div class="save-price"><span></span><br>OFF</div>
+                <div class="part2">
+                    
+                    {{#if products.featured}}
+                        {{> components/products/featured products=products.featured }}
+                    {{/if}}
+                    
+                </div>
+            </section> 
+
+
+            <article class="productView-description" itemprop="description">
+                <ul class="tabs" data-tab>
+                    <li class="tab is-active">
+                        <span class="tab-title">Product Description</span>
+                        <hr class="faded">
+                    </li>
+                    {{#if product.warranty}}
+                        <li class="tab">
+                            <a class="tab-title" href="#tab-warranty">{{lang 'products.warranty'}}</a>
+                        </li>
+                    {{/if}}
+                </ul>
+                <div class="tabs-contents">
+                    <div class="tab-content is-active" id="tab-description">
+                        {{{product.description}}}
+                    </div>
+                   {{#if product.warranty}}
+                       <div class="tab-content" id="tab-warranty">
+                           {{{product.warranty}}}
+                       </div>
+                   {{/if}}
+                </div>
+
+                <div class="also-like">
+                    <h4>You May Also Like</h4>
+                    <hr class="faded">
+                    {{> components/products/also-like-carousel products=product.related_products columns=4}}
+                </div>
+
+                <div class="pr_review_summary {{product.sku}}">
+                    <h2>Product Reviews</h2>
+                    <hr class="faded">
+                    <script type="text/javascript">POWERREVIEWS.display.engine(document, { pr_page_id : "{{product.sku}}" });</script>
+                </div>
+
+            </article>
+
+            <div class="also-bought">
+                <h4>Golfers Also Bought</h4>
+                {{> components/products/also-bought-carousel products=product.similar_by_views columns=1}}
+            </div>
+
+        </div>
+
+
+</div>
+
+<div id="previewModal" class="modal modal--large" data-reveal data-reveal-onload-reset>
+    <div class="modal-content"></div>
+    <div class="loadingOverlay"></div>
+</div>

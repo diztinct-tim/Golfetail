@@ -1,0 +1,52 @@
+---
+category:
+    shop_by_price: true
+    products:
+        limit: {{theme_settings.categorypage_products_per_page}}
+---
+{{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
+
+{{#partial "head"}}
+    {{#if pagination.category.previous}}
+        <link rel="prev" href="{{pagination.category.previous}}">
+    {{/if}}
+    {{#if pagination.category.next}}
+        <link rel="next" href="{{pagination.category.next}}">
+    {{/if}}
+{{/partial}}
+
+{{#partial "page"}}
+
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+{{#if category.image}}
+    <img src="{{getImage category.image 'zoom'}}">
+{{/if}}
+<h1 class="page-heading">{{category.name}}</h1>
+{{{category.description}}}
+<div class="page white-wrapper">
+    <aside class="page-sidebar" id="faceted-search-container">
+    <!-- <aside class="page-sidebar" id="nextopia-side-bar"> -->
+        {{> components/category/sidebar}}
+    </aside>
+
+    <main class="page-content" id="product-listing-container">
+    <!-- <main class="page-content" id="main-nxt-content"> -->
+        {{#if category.products}}
+            {{> components/category/product-listing}}
+        {{else}}
+            <p>{{lang 'categories.no_products'}}</p>
+        {{/if}}
+    </main>
+</div>
+
+<script type="text/javascript">
+var google_tag_params = {
+ecomm_pagetype: 'category',
+ecomm_prodid: '',
+ecomm_totalvalue: 0
+};
+</script>
+
+{{/partial}}
+{{> layout/base}}
+

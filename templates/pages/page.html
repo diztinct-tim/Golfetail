@@ -1,0 +1,24 @@
+{{#partial "page"}}
+
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+<main class="page">
+
+    <h1 class="page-heading">{{ page.title }}</h1>
+
+    <div class="white-wrapper cf">
+        <div id="faceted-search-container" class="search-refinements"></div>
+        <div id="product-listing-container">
+            {{#replace '%%Syndicate%%' page.content}}
+                {{> components/page/rss_feed}}
+            {{else}}
+                <p>{{{page.content}}}</p>
+            {{/replace}}
+        </div>
+    </div>
+
+</main>
+
+{{/partial}}
+
+{{> layout/base}}
