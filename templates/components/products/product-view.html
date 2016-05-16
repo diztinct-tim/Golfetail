@@ -179,7 +179,7 @@ ecomm_totalvalue: finalPrice
 
             <div class="top-right-desk">
 
-                    <p class="toggle-map-price id-hidden">Click here to view price</p>
+                    <p class="toggle-map-price id-hidden"><img src="https://cdn6.bigcommerce.com/s-wrw5mek/product_images/uploaded_images/-icon-03.jpg">Click to view price</p>
                     {{#if product.price}}
                         <div class="productView-price">
                             {{> components/products/price price=product.price schema_org=true}}
@@ -258,6 +258,7 @@ ecomm_totalvalue: finalPrice
                         </form>
 
                         <span class="sku">SKU: {{product.sku}}</span>
+                        <span class="sku brand">BRAND: <a href="{{product.brand.url}}">{{product.brand.name}}</a></span>
 
                         {{>components/common/share}}
 

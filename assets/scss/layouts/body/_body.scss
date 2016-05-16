@@ -1634,9 +1634,17 @@ html, body{
         margin-bottom: 50px;
     }
     .productView .sku {
-        padding-bottom: 10px;
+        padding-bottom: 0px;
         display: block;
         color: #767676;
+        text-transform: uppercase;
+        text-align: left;
+    }
+    .productView .sku.brand{
+        padding-bottom:10px;
+    }
+    .productView .sku.brand > a{
+        color:#767676;
     }
     main.page {
         min-height: 300px;
@@ -1979,12 +1987,43 @@ border: 1px solid #fff;
     padding: 10px 20px 10px 20px;
     border-left: 1px solid #ddd;
     color: #29449c;
-    text-decoration: underline;
+    text-decoration: none;
     cursor:pointer;
-    font-size: 16px;
+    font-size: 18px;
 }
-
-
+p.toggle-map-price > img{
+    margin-right:5px;
+    position:relative;
+    top:-1px;
+}
+.toggle-map-price:after {
+    content: "";
+    background: transparent url("https://cdn6.bigcommerce.com/s-wrw5mek/product_images/uploaded_images/down-arrow.png") no-repeat;
+    background-size:9px 5px;
+    display: inline-block;
+    height: 5px;
+    width: 9px;
+    margin-left: 6px;
+    position: relative;
+    top: -2px;
+}
+.toggle-map-price.open-map:after {
+    content: "";
+    background: transparent url("https://cdn6.bigcommerce.com/s-wrw5mek/product_images/uploaded_images/up-arrow.png") no-repeat;
+    background-size:9px 5px;
+    display: inline-block;
+    height: 5px;
+    width: 9px;
+    margin-left: 6px;
+}
+.free-ship-instock span{
+    color: #007b56 !important;
+    font-size: 14px;
+}
+.free-ship-instock > p > span.orange-text{
+    color: #007b56 !important;
+    font-size:14px !important;
+}
 
 
 
@@ -2571,7 +2610,16 @@ border: 1px solid #fff;
 
     // END ADDED FROM DIZTINCT CSS
 
-
+    .toggle-map-price{
+        font-size:20px;
+        padding: 10px 20px 5px 20px;
+    }
+    p.toggle-map-price > img {
+        top: -2px;
+    }
+    .free-ship-instock span, .free-ship-instock > p > span.orange-text{
+        font-size:14px;
+    }
 
 
 

@@ -121,6 +121,57 @@
 
         </script>
 
+        <script type="text/javascript" src="http://10915580.collect.igodigital.com/collect.js"></script>        
+        <script>
+            _etmc.push(["setOrgId", "10915580"]);
+            var trackURL = window.location.href;
+            var trackflag = 0;
+            
+            {{#if customer}}            
+                _etmc.push(["setUserInfo", { "email" : "{{customer.email}}",
+                    "details" : { 
+                        "first_name" : "{{customer.shipping_address.first_name}}", 
+                        "last_name" : "{{customer.shipping_address.last_name}}", 
+                        "zip" : "{{customer.shipping_address.zip}}" } 
+                } ]);            
+            {{/if}}
+            
+            {{#if category}}
+                _etmc.push(["trackPageView", {"category" : "{{category.name}}"} ]);
+                trackflag = 1;
+            {{/if}}
+            
+            if( trackURL.indexOf("searchresults") >= 0 ){
+                var trackquery = currentURL.split('?search_query_adv=');                
+                _etmc.push(["trackPageView", {"search" : trackquery[1]} ]);                                
+                trackflag = 1;
+            }
+            
+            {{#if product.sku}}
+                _etmc.push(["trackPageView", {"item" : '{{product.sku}}'} ]); 
+                trackflag = 1;
+            {{/if}}
+            
+            if( trackURL.indexOf("cart.php") >= 0 ){
+                _etmc.push(["trackCart", {"cart" : [
+                                {{#each cart.items}}
+                                { "item" : "{{sku}}",
+                                "unique_id" : "{{id}}",
+                                "quantity" : "{{quantity}}",
+                                "price" : "{{price.value}}" },
+                                {{/each}}                            
+                                ] } ]);
+                _etmc.push(["trackPageView"]);
+                trackflag = 1;
+            }
+            
+            if (trackflag == 0) {
+                console.log('Regular Page');
+                _etmc.push(["trackPageView"]);    
+            }
+        </script>
+
+
     </body>
 
 </html>

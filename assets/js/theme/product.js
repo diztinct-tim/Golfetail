@@ -114,6 +114,7 @@ export default class Product extends PageManager {
         }
 
         $(".toggle-map-price").on("click", function(){
+            $(this).toggleClass("open-map");
             $(".top-right-desk .productView-price").slideToggle();
         })
 
